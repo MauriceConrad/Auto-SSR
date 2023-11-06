@@ -1,0 +1,25 @@
+[
+  {
+    "origins": ["^\\/$", "^\\/studio$"],
+    "track": {
+      "opengraph": ["og:title", "og:description", "og:image", "og:url", "og:type"],
+      "xhr": [
+        {
+          "filter": {
+            "url": "https:\\/\\/cdn\\.builder\\.io\\/api\\/v3\\/content\\/(.*)\\?.*",
+            "query": {
+              "query.id": "(\\\"(.*)\\\")?"
+            }
+          },
+          "cacheKey": "builderio-api-content:$1:$3",
+          "defaultVars": [
+            "MODEL",
+            "QUERY.ID",
+            "MODEL_ID"
+          ],
+          "cacheLifetime": 3600
+        }
+      ]
+    }
+  }
+]
