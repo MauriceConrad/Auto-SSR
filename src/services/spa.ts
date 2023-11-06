@@ -26,6 +26,8 @@ const fileCache = new FileCache(fileCacheLifetime);
 export function useSPA(server: FastifyInstance, baseDir: string) {
   server.get('/*', async (request, reply) => {
     const requestPath = (request.params as { [k: string]: string; })['*'];
+    console.log('...requestPath', requestPath);
+    
     const pathFileLocation = path.resolve(baseDir, requestPath);
     const indexFileLocation = path.resolve(baseDir, 'index.html');
 

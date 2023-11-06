@@ -40,5 +40,5 @@ COPY package.json .
 COPY package-lock.json .
 RUN npm ci
 RUN npm run build
-#RUN chmod -R o+rwx node_modules/puppeteer/.local-chromium
+RUN chmod -R o+rwx node_modules/puppeteer/.local-chromium
 CMD ["node", "dist"]
