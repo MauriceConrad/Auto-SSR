@@ -11,6 +11,10 @@ const server = Fastify({
 
 useSPA(server, 'public');
 
+server.get('/health', (request, reply) => {
+  reply.status(200).send('I\'m healthy');
+});
+
 
 const port = Number(process.env.PORT);
  

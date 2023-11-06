@@ -40,8 +40,5 @@ COPY package.json .
 COPY package-lock.json .
 RUN npm ci
 RUN npm run build
-# RUN rm -f .npmrc
 #RUN chmod -R o+rwx node_modules/puppeteer/.local-chromium
-#RUN ln -s /usr/lib/x86_64-linux-gnu/libOSMesa.so.6 /opt/google/chrome/libosmesa.so
-#RUN node_modules/puppeteer/.local-chromium --no-first-run --user-data-dir=~/chrome-stuff --use-gl=osmesa
 CMD ["node", "dist"]
