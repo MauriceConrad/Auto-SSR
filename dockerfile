@@ -1,4 +1,4 @@
-FROM node:16-buster-slim
+FROM node:18-buster-slim
 WORKDIR /app
 RUN apt-get update
 RUN apt-get install -y \
@@ -34,15 +34,14 @@ RUN apt-get install -y \
     libxss1 \
     libxtst6 \
     xdg-utils \
-    ffmpeg \
-    wget
-ARG NPM_TOKEN
-RUN wget "https://github.com/googlefonts/noto-emoji/raw/main/fonts/NotoColorEmoji.ttf" --directory-prefix /usr/share/fonts/
-# COPY .npmrc .npmrc
+    libosmesa6-dev
+COPY . /app
 COPY package.json .
 COPY package-lock.json .
 RUN npm ci
-RUN chmod -R o+rwx node_modules/puppeteer/.local-chromium
+RUN npm run build
 # RUN rm -f .npmrc
-COPY . /app
+#RUN chmod -R o+rwx node_modules/puppeteer/.local-chromium
+#RUN ln -s /usr/lib/x86_64-linux-gnu/libOSMesa.so.6 /opt/google/chrome/libosmesa.so
+#RUN node_modules/puppeteer/.local-chromium --no-first-run --user-data-dir=~/chrome-stuff --use-gl=osmesa
 CMD ["node", "dist"]
