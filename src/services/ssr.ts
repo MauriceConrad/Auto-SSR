@@ -36,7 +36,7 @@ console.log('cache max age', cacheMaxAge);
 
 
 const browser = puppeteer.launch({
-  headless: true,
+  headless: 'new',
   args: [
     '--no-sandbox',
     '--disable-setuid-sandbox',

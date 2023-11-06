@@ -41,6 +41,6 @@
     "mime-types": "^2.1.35",
     "node-html-parser": "^6.1.11",
     "p-limit": "^3.1.0",
-    "puppeteer": "^15.5.0"
+    "puppeteer": "^20.9.0"
   }
 }
